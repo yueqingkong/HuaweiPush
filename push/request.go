@@ -14,7 +14,7 @@ func Post(url string, headers map[string]string, params interface{}, inter inter
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
 	}
 
-	resp, err := resty.SetTimeout(time.Minute * 1).R().
+	resp, err := resty.New().SetTimeout(time.Minute * 1).R().
 		SetHeaders(headers).
 		SetBody(params).
 		Post(url)
@@ -35,7 +35,7 @@ func PostForm(url string, headers map[string]string, params map[string]string, i
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
 	}
 
-	resp, err := resty.SetTimeout(time.Minute * 1).R().
+	resp, err := resty.New().SetTimeout(time.Minute * 1).R().
 		SetHeaders(headers).
 		SetFormData(params).
 		Post(url)
